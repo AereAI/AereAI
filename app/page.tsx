@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Playfair_Display, Inter, Poppins, Montserrat } from 'next/font/google';
 
@@ -29,8 +29,20 @@ const montserrat = Montserrat({
 });
 
 export default function Page() {
+  const scrollToSection = (sectionId: string) => {
+    console.log('Scrolling to:', sectionId);
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        console.log('Element not found:', sectionId);
+      }
+    }, 100);
+  };
+
   return (
-    <div className={`flex flex-col min-h-screen ${montserrat.className}`}>
+    <div className={`flex flex-col min-h-screen ${montserrat.className}`} style={{ scrollBehavior: 'smooth' }}>
       {/* Header/Navigation Bar */}
               <header className="w-full flex items-center justify-between px-8 py-6 bg-transparent absolute top-0 left-0 right-0 z-10">
         <div className="flex items-center gap-2">
@@ -40,13 +52,33 @@ export default function Page() {
           <span className="text-xl font-bold tracking-tight text-white">Aere</span>
         </div>
         <nav className="hidden md:flex items-center gap-6 text-white text-base absolute left-1/2 transform -translate-x-1/2">
-          <Link href="#" className="hover:text-orange-200 transition">Services</Link>
+          <button 
+            onClick={() => scrollToSection('use-cases')} 
+            className="hover:text-blue-200 transition cursor-pointer bg-transparent border-none text-white text-base"
+          >
+            Use Cases
+          </button>
           <span className="text-white/50">•</span>
-          <Link href="#" className="hover:text-orange-200 transition">Solutions</Link>
+          <button 
+            onClick={() => scrollToSection('how-it-works')} 
+            className="hover:text-blue-200 transition cursor-pointer bg-transparent border-none text-white text-base"
+          >
+            How It Works
+          </button>
           <span className="text-white/50">•</span>
-          <Link href="#" className="hover:text-orange-200 transition">Pricing</Link>
+          <button 
+            onClick={() => scrollToSection('pricing')} 
+            className="hover:text-blue-200 transition cursor-pointer bg-transparent border-none text-white text-base"
+          >
+            Pricing
+          </button>
           <span className="text-white/50">•</span>
-          <Link href="#" className="hover:text-orange-200 transition">Support</Link>
+          <button 
+            onClick={() => scrollToSection('about')} 
+            className="hover:text-blue-200 transition cursor-pointer bg-transparent border-none text-white text-base"
+          >
+            About
+          </button>
         </nav>
         <div className="w-32"></div>
       </header>
@@ -62,14 +94,14 @@ export default function Page() {
         {/* Content Overlay */}
         <div className="relative z-20 min-h-screen">
           {/* Top Left Text */}
-          <div className="absolute top-32 left-8 md:left-16 max-w-md">
+          <div className="absolute top-[10%] left-[10%] md:left-[2%] max-w-md">
             <p className={`text-lg text-white/50 ${montserrat.className}`}>
               From simple chatbots to complex AI workflows, a comprehensive approach to your business automation.
             </p>
           </div>
           
           {/* Bottom Left Text */}
-          <div className="absolute bottom-32 left-8 md:left-16 max-w-4xl">
+          <div className="absolute bottom-[10%] left-8 md:left-16 max-w-[70%]">
             <h1 className={`text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-4 text-white ${montserrat.className}`}>
               <span className="block text-white/60">Modern AI for</span>
               <span className="block text-5xl md:text-7xl lg:text-8xl">Your Business</span>
@@ -82,57 +114,12 @@ export default function Page() {
           {/* Faint Horizontal Line */}
           <div className="absolute bottom-[75%] left-0 right-0 h-px bg-white/10"></div>
 
-          {/* Consultation Form - Frosted Glass */}
-          <div className="absolute right-8 md:right-8 top-[62%] transform -translate-y-1/2 z-30">
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl max-w-sm">
-              <h3 className="text-2xl font-bold text-white mb-6">Free Consultation</h3>
-              
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-white/90 text-sm font-medium mb-2">Company Name</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-                    placeholder="Your company name"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-white/90 text-sm font-medium mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-white/90 text-sm font-medium mb-2">What do you need help with?</label>
-                  <textarea 
-                    rows={4}
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent resize-none"
-                    placeholder="Brief description of your automation needs..."
-                  ></textarea>
-                </div>
-                
-                <button 
-                  type="submit"
-                  className="w-full bg-white text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 shadow-lg"
-                >
-                  Book Free Consultation
-                </button>
-              </form>
-              
-              <p className="text-white/70 text-xs mt-4 text-center">
-                No commitment required • 30-minute call
-              </p>
-            </div>
-          </div>
+          
         </div>
       </main>
 
       {/* Use Cases Section */}
-      <section className="py-20 px-8 bg-gradient-to-br from-blue-50 to-white">
+      <section id="use-cases" className="py-20 px-8 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -216,7 +203,7 @@ export default function Page() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-20 px-8 bg-gradient-to-b from-blue-600 to-white">
+      <section id="how-it-works" className="py-20 px-8 bg-gradient-to-b from-blue-600 to-white">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -376,7 +363,7 @@ export default function Page() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 px-8 bg-gradient-to-br from-blue-50 to-white">
+      <section id="pricing" className="py-20 px-8 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -592,6 +579,102 @@ export default function Page() {
               <button className="bg-blue-600 text-white py-3 px-8 rounded-xl font-medium hover:bg-blue-700 transition">
                 Book a Call
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-8 bg-blue-600">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              About Us
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            </p>
+          </div>
+
+          {/* Founders */}
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            {/* Founder 1 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <div className="flex items-start gap-6">
+                {/* Photo Placeholder */}
+                <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                
+                <div className="flex-1">
+                  <p className="text-sm text-gray-500 mb-1">co-founder & ceo</p>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Sarah Chen</h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                  </p>
+                  
+                  {/* Social Icons */}
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                      </svg>
+                    </div>
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                      </svg>
+                    </div>
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Founder 2 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <div className="flex items-start gap-6">
+                {/* Photo Placeholder */}
+                <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                
+                <div className="flex-1">
+                  <p className="text-sm text-gray-500 mb-1">co-founder & cto</p>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Mike Torres</h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                  </p>
+                  
+                  {/* Social Icons */}
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                      </svg>
+                    </div>
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                      </svg>
+                    </div>
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

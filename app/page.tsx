@@ -88,7 +88,7 @@ export default function Page() {
         {/* Aere Background Image */}
         <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/aere blue.jpg')" }}
+        style={{ backgroundImage: "url('/images/aere blue 2.jpg')" }}
         ></div>
         
         {/* Content Overlay */}
@@ -119,7 +119,7 @@ export default function Page() {
       </main>
 
       {/* Use Cases Section */}
-      <section id="use-cases" className="py-20 px-8 bg-gradient-to-br from-blue-50 to-white">
+      <section id="use-cases" className="py-20 px-8 bg-gradient-to-br from-blue-50 to-white" style={{ backgroundImage: "url('/images/clouds.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">

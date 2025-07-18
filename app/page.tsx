@@ -170,6 +170,166 @@ export default function Page() {
         </div>
       </section>
 
+      {/* How It Works Section */}
+      <section className="py-20 px-8 bg-gradient-to-b from-blue-600 to-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block bg-white rounded-full px-6 py-2 mb-6">
+              <span className="text-gray-900 font-semibold">How it works</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              3 Easy steps to automate your business
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Tell us what you need, we build it for you, and you start using it immediately. Simple, done-for-you setup that saves you time and money.
+            </p>
+          </div>
+
+          {/* Steps */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Step 1 */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  1
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Tell us what you need</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Fill out a simple form or book a call with our team. We'll understand your business needs and design the perfect AI solution.
+                </p>
+                
+                {/* Visual Elements */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-sm font-medium text-gray-900">Business Owner</div>
+                      <div className="text-xs text-gray-500">Fill out form or call</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                    <div className="flex-1 h-px bg-gray-200"></div>
+                  </div>
+                  
+                  <div className="bg-blue-50 rounded-lg p-4">
+                    <div className="text-sm font-medium text-gray-900 mb-2">Requirements Form</div>
+                    <div className="space-y-1">
+                      <div className="text-xs text-gray-600">• Email automation</div>
+                      <div className="text-xs text-gray-600">• Scheduling system</div>
+                      <div className="text-xs text-gray-600">• Customer support</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  2
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">We build it for you</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Our team creates your custom AI assistant with GPT prompt setup, thorough testing, and integration with your existing tools.
+                </p>
+                
+                {/* Visual Elements */}
+                <div className="space-y-4">
+                  <div className="bg-blue-50 rounded-lg p-4">
+                    <div className="text-sm font-medium text-gray-900 mb-3">Building your AI...</div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <div className="text-sm text-gray-600">GPT Setup</div>
+                    </div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <div className="text-sm text-gray-600">Testing</div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      </div>
+                      <div className="text-sm text-gray-600">Integration</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  3
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">You start using it</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  We provide a complete setup guide and monthly support. Your AI assistant is ready to handle emails, scheduling, and customer inquiries.
+                </p>
+                
+                {/* Visual Elements */}
+                <div className="space-y-4">
+                  <div className="bg-blue-50 rounded-lg p-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                      </div>
+                      <div className="text-sm font-medium text-gray-900">Your AI Assistant</div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-xs text-gray-600">✓ Email automation</div>
+                      <div className="text-xs text-gray-600">✓ Appointment scheduling</div>
+                      <div className="text-xs text-gray-600">✓ Customer support</div>
+                    </div>
+                    <button className="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition">
+                      Start Using
+                    </button>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 text-center">
+                    <div className="flex-1 h-px bg-gray-200"></div>
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                    <div className="flex-1 h-px bg-gray-200"></div>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="text-sm font-medium text-gray-900">Your Business</div>
+                    <div className="text-xs text-gray-500">Automated & Efficient</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom Section */}
       <footer className="w-full px-8 py-6 flex items-center justify-between bg-black/20 backdrop-blur-sm">
         {/* Bottom Left */}

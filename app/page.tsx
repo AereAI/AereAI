@@ -30,16 +30,16 @@ const montserrat = Montserrat({
 
 export default function Page() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className={`flex flex-col min-h-screen ${montserrat.className}`}>
       {/* Header/Navigation Bar */}
-      <header className="w-full flex items-center justify-between px-8 py-6 bg-transparent absolute top-0 left-0 right-0 z-10">
+              <header className="w-full flex items-center justify-between px-8 py-6 bg-transparent absolute top-0 left-0 right-0 z-10">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
             <span className="text-red-600 font-bold text-lg">A</span>
           </div>
           <span className="text-xl font-bold tracking-tight text-white">Aere</span>
         </div>
-        <nav className="hidden md:flex items-center gap-6 text-white text-base">
+        <nav className="hidden md:flex items-center gap-6 text-white text-base absolute left-1/2 transform -translate-x-1/2">
           <Link href="#" className="hover:text-orange-200 transition">Services</Link>
           <span className="text-white/50">•</span>
           <Link href="#" className="hover:text-orange-200 transition">Solutions</Link>
@@ -48,9 +48,7 @@ export default function Page() {
           <span className="text-white/50">•</span>
           <Link href="#" className="hover:text-orange-200 transition">Support</Link>
         </nav>
-        <button className="border border-white text-white px-6 py-2 rounded-lg font-medium hover:bg-white hover:text-red-600 transition">
-          Get Started
-        </button>
+        <div className="w-32"></div>
       </header>
 
       {/* Hero Section with Aere Background Image */}
@@ -82,7 +80,54 @@ export default function Page() {
           <div className="absolute top-0 right-1/4 w-px h-full bg-white/10"></div>
           
           {/* Faint Horizontal Line */}
-          <div className="absolute bottom-[27%] left-0 right-0 h-px bg-white/10"></div>
+          <div className="absolute bottom-[75%] left-0 right-0 h-px bg-white/10"></div>
+
+          {/* Consultation Form - Frosted Glass */}
+          <div className="absolute right-8 md:right-8 top-[62%] transform -translate-y-1/2 z-30">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl max-w-sm">
+              <h3 className="text-2xl font-bold text-white mb-6">Free Consultation</h3>
+              
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-white/90 text-sm font-medium mb-2">Company Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                    placeholder="Your company name"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-white/90 text-sm font-medium mb-2">Email</label>
+                  <input 
+                    type="email" 
+                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-white/90 text-sm font-medium mb-2">What do you need help with?</label>
+                  <textarea 
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent resize-none"
+                    placeholder="Brief description of your automation needs..."
+                  ></textarea>
+                </div>
+                
+                <button 
+                  type="submit"
+                  className="w-full bg-white text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 shadow-lg"
+                >
+                  Book Free Consultation
+                </button>
+              </form>
+              
+              <p className="text-white/70 text-xs mt-4 text-center">
+                No commitment required • 30-minute call
+              </p>
+            </div>
+          </div>
         </div>
       </main>
 
@@ -552,35 +597,76 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Bottom Section */}
-      <footer className="w-full px-8 py-6 flex items-center justify-between bg-black/20 backdrop-blur-sm">
-        {/* Bottom Left */}
-        <div className="text-white/80 text-sm">
-          <div>Best Wrapper Solutions</div>
-          <div>2025</div>
-        </div>
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16 px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8">
+            {/* Logo and Slogan */}
+            <div className="md:col-span-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">A</span>
+                </div>
+                <span className="text-2xl font-bold">Aere</span>
+              </div>
+              <p className="text-gray-300 text-lg mb-6">
+                Smart automation. Done for you.
+              </p>
+              <p className="text-gray-400 leading-relaxed">
+                We build custom AI assistants that handle the busywork, so you can focus on what matters most to your business.
+              </p>
+            </div>
 
-        {/* Bottom Center */}
-        <div className="text-white/80 text-sm text-center">
-          <div>San Francisco, CA</div>
-          <div>17:17:08 GMT-8</div>
-        </div>
+            {/* Contact Information */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contact</h3>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-gray-300">hello@aere.ai</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span className="text-gray-300">San Francisco, CA</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-gray-300">+1 (555) 123-4567</span>
+                </div>
+              </div>
+            </div>
 
-        {/* Bottom Right - Team Profiles */}
-        <div className="flex items-center gap-4">
-          <div className="text-white/80 text-sm">Next &gt;</div>
-          
-          {/* Profile Card 1 */}
-          <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center border border-white/30">
-            <span className="text-white text-xs font-medium">Sarah Chen</span>
+            {/* Navigation */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <div className="space-y-3">
+                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Services</a>
+                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Solutions</a>
+                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Pricing</a>
+                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Support</a>
+                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Book Consultation</a>
+              </div>
+            </div>
           </div>
-          
-          {/* Profile Card 2 */}
-          <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center border border-white/30">
-            <span className="text-white text-xs font-medium">Mike Torres</span>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div className="text-gray-400 text-sm mb-4 md:mb-0">
+              © 2025 Aere. All rights reserved.
+            </div>
+            <div className="flex items-center gap-6 text-sm text-gray-400">
+              <a href="#" className="hover:text-blue-400 transition">Privacy Policy</a>
+              <a href="#" className="hover:text-blue-400 transition">Terms of Service</a>
+              <a href="#" className="hover:text-blue-400 transition">Cookie Policy</a>
+            </div>
           </div>
-          
-          <div className="text-white/80 text-xs">Advanced Wrapper Technologies</div>
         </div>
       </footer>
     </div>

@@ -29,62 +29,142 @@ const montserrat = Montserrat({
 });
 
 export default function Page() {
-  const scrollToSection = (sectionId: string) => {
-    console.log('Scrolling to:', sectionId);
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [currentSection, setCurrentSection] = useState('hero');
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Check if at the very top
+      setIsAtTop(currentScrollY < 10);
+      
+      // Always show nav at the top
+      if (currentScrollY < 100) {
+        setIsNavVisible(true);
       } else {
-        console.log('Element not found:', sectionId);
+        // Hide when scrolling down, show when scrolling up
+        setIsNavVisible(currentScrollY < lastScrollY);
       }
-    }, 100);
+      
+      // Determine current section based on scroll position
+      const sections = ['hero', 'use-cases', 'how-it-works', 'pricing', 'about'];
+      let activeSection = 'hero';
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom > 100) {
+            activeSection = sectionId;
+            break;
+          }
+        }
+      }
+      
+      setCurrentSection(activeSection);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  const scrollToSection = (sectionId: string) => {
+    console.log('Button clicked for section:', sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      console.log('Element found, scrolling...');
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      console.log('Element not found:', sectionId);
+    }
   };
 
   return (
     <div className={`flex flex-col min-h-screen ${montserrat.className}`} style={{ scrollBehavior: 'smooth' }}>
       {/* Header/Navigation Bar */}
-              <header className="w-full flex items-center justify-between px-8 py-6 bg-transparent absolute top-0 left-0 right-0 z-10">
+      <header className={`w-full flex items-center justify-between px-8 py-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'} ${isAtTop ? 'bg-transparent' : 'bg-white/60 backdrop-blur-sm shadow-sm'}`}>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
+          <div className={`w-8 h-8 rounded flex items-center justify-center ${currentSection === 'hero' ? 'bg-white' : 'bg-gray-900'}`}>
             <span className="text-red-600 font-bold text-lg">A</span>
           </div>
-          <span className="text-xl font-bold tracking-tight text-white">Aere</span>
+          <span className={`text-xl font-bold tracking-tight ${currentSection === 'hero' ? 'text-white' : 'text-gray-900'}`}>Aere</span>
         </div>
-        <nav className="hidden md:flex items-center gap-6 text-white text-base absolute left-1/2 transform -translate-x-1/2">
-          <button 
-            onClick={() => scrollToSection('use-cases')} 
-            className="hover:text-blue-200 transition cursor-pointer bg-transparent border-none text-white text-base"
+        
+        {/* Simple centered navigation */}
+        <div className={`hidden md:flex items-center gap-6 text-base ${currentSection === 'hero' ? 'text-white' : 'text-gray-900'}`}>
+          <a 
+            href="#use-cases"
+            onClick={(e) => {
+              e.preventDefault();
+              console.log('Use Cases clicked!');
+              const element = document.getElementById('use-cases');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className={`hover:text-blue-600 transition cursor-pointer text-base px-3 py-2 rounded ${currentSection === 'hero' ? 'text-white hover:text-blue-200' : 'text-gray-900 hover:text-blue-600'}`}
           >
             Use Cases
-          </button>
-          <span className="text-white/50">•</span>
-          <button 
-            onClick={() => scrollToSection('how-it-works')} 
-            className="hover:text-blue-200 transition cursor-pointer bg-transparent border-none text-white text-base"
+          </a>
+          <span className={currentSection === 'hero' ? 'text-white/50' : 'text-gray-900/50'}>•</span>
+          <a 
+            href="#how-it-works"
+            onClick={(e) => {
+              e.preventDefault();
+              console.log('How It Works clicked!');
+              const element = document.getElementById('how-it-works');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className={`hover:text-blue-600 transition cursor-pointer text-base px-3 py-2 rounded ${currentSection === 'hero' ? 'text-white hover:text-blue-200' : 'text-gray-900 hover:text-blue-600'}`}
           >
             How It Works
-          </button>
-          <span className="text-white/50">•</span>
-          <button 
-            onClick={() => scrollToSection('pricing')} 
-            className="hover:text-blue-200 transition cursor-pointer bg-transparent border-none text-white text-base"
+          </a>
+          <span className={currentSection === 'hero' ? 'text-white/50' : 'text-gray-900/50'}>•</span>
+          <a 
+            href="#pricing"
+            onClick={(e) => {
+              e.preventDefault();
+              console.log('Pricing clicked!');
+              const element = document.getElementById('pricing');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className={`hover:text-blue-600 transition cursor-pointer text-base px-3 py-2 rounded ${currentSection === 'hero' ? 'text-white hover:text-blue-200' : 'text-gray-900 hover:text-blue-600'}`}
           >
             Pricing
-          </button>
-          <span className="text-white/50">•</span>
-          <button 
-            onClick={() => scrollToSection('about')} 
-            className="hover:text-blue-200 transition cursor-pointer bg-transparent border-none text-white text-base"
+          </a>
+          <span className={currentSection === 'hero' ? 'text-white/50' : 'text-gray-900/50'}>•</span>
+          <a 
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              console.log('About clicked!');
+              const element = document.getElementById('about');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className={`hover:text-blue-600 transition cursor-pointer text-base px-3 py-2 rounded ${currentSection === 'hero' ? 'text-white hover:text-blue-200' : 'text-gray-900 hover:text-blue-600'}`}
           >
             About
-          </button>
-        </nav>
+          </a>
+        </div>
+        
         <div className="w-32"></div>
       </header>
 
       {/* Hero Section with Aere Background Image */}
-      <main className="flex-1 relative">
+      <main id="hero" className="flex-1 relative">
         {/* Aere Background Image */}
         <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"

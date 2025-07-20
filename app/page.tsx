@@ -90,9 +90,9 @@ export default function Page() {
   return (
     <div className={`flex flex-col min-h-screen ${montserrat.className}`} style={{ scrollBehavior: 'smooth' }}>
       {/* Header/Navigation Bar */}      <header className={`w-full flex items-center justify-between px-8 py-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'} ${isAtTop ? 'bg-transparent' : 'bg-white/60 backdrop-blur-sm shadow-sm'}`}>
-        <div className="flex items-center gap-2">
-          <div className={`w-8 h-8 rounded flex items-center justify-center ${isAtTop ? 'bg-white' : 'bg-gray-900'}`}>
-            <span className="text-red-600 font-bold text-lg">A</span>
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div className={`w-8 h-8 rounded flex items-center justify-center ${isAtTop ? 'bg-white/20 backdrop-blur-sm border border-white/30' : 'bg-gray-900/20 backdrop-blur-sm border border-gray-900/30'}`}>
+            <span className={`font-bold text-lg ${isAtTop ? 'text-white' : 'text-gray-900'}`}>A</span>
           </div>
           <span className={`text-xl font-bold tracking-tight ${isAtTop ? 'text-white' : 'text-gray-900'}`}>Aere</span>
         </div>
@@ -190,7 +190,7 @@ export default function Page() {
           {/* Bottom Left Text */}
           <div className="absolute bottom-[10%] left-8 md:left-16 max-w-[70%]">
             <h1 className={`text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-4 text-white ${montserrat.className}`}>
-              <span className="block text-white/60">Modern AI for</span>
+              <span className="block text-white/60">Custom AI for</span>
               <span className="block text-5xl md:text-7xl lg:text-8xl">Your Business</span>
             </h1>
           </div>
@@ -242,11 +242,18 @@ export default function Page() {
                     className="w-full px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
+                <div>
+                  <textarea 
+                    placeholder="Tell us about your potential use case or how you'd like to use AI in your business..."
+                    rows={4}
+                    className="w-full px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
+                  />
+                </div>
                 <button 
                   type="submit" 
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition-colors duration-200"
                 >
-                  Get Started
+                  Submit
                 </button>
               </form>
               <p className="text-gray-600 text-sm mt-4 text-center"></p>
@@ -259,10 +266,9 @@ export default function Page() {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-4">PRODUCT OFFERINGS</p>
+            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-4">EXAMPLE USES</p>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Choose your use case
-            </h2>
+              Use AI to automate your business</h2>
           </div>
 
           {/* Use Case Cards */}
@@ -274,9 +280,9 @@ export default function Page() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Email Management</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Quote Generation</h3>
               <p className="text-gray-600 leading-relaxed">
-                Auto-respond to inquiries, schedule appointments, and handle customer service emails with intelligent AI responses.
+              tailored GPT form that lets customers enter their project needs, then automatically crafts a professional quote or estimate—cutting down back-and-forth and speeding up the sales cycle.
               </p>
             </div>
 
@@ -287,9 +293,9 @@ export default function Page() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Document Processing</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Social Media Post Generator</h3>
               <p className="text-gray-600 leading-relaxed">
-                Summarize legal documents, extract key information, and prepare client-ready responses with AI-powered analysis.
+                Upload a product photo or basic info, and the tool generates SEO-friendly product descriptions or daily social posts—keeping marketing consistent without hiring a copywriter.
               </p>
             </div>
 
@@ -300,14 +306,18 @@ export default function Page() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Lead Qualification</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Qualify leads, handle property inquiries, and manage listings with intelligent conversation flows and data collection.
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Market Research</h3>
+              <p className="text-gray-600 leading-relaxed">Paste in raw competitor research, reviews, or articles, and GPT turns it into concise bullet points or a SWOT-style breakdown—turning clutter into clarity in minutes. Qualify leads, handle property inquiries, and manage listings with intelligent conversation flows and data collection.
               </p>
             </div>
           </div>
 
-          
+          {/* Possibilities Text */}
+                      <div className="text-center">
+              <p className="text-3xl font-bold text-gray-900">
+                <span className="text-blue-600">Endless</span> efficiency improvements 
+              </p>
+            </div>
 
          
         </div>
@@ -321,7 +331,7 @@ export default function Page() {
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-block bg-white rounded-full px-6 py-2 mb-6 shadow-lg">
-              <span className="text-gray-900 font-semibold">How it works</span>
+              <span className="text-gray-900 font-semibold">Our Process</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               3 Easy steps to automate your business
@@ -341,38 +351,36 @@ export default function Page() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Tell us what you need</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Fill out a simple form or book a call with our team. We'll understand your business needs and design the perfect AI solution.
+                  Fill out a simple form or book a call with our team. We'll understand your business needs and design AI around you. 
                 </p>
                 
                 {/* Visual Elements */}
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900">Consultation Call</div>
+                        <div className="text-sm text-gray-600">15-30 minute discovery</div>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900">Business Owner</div>
-                      <div className="text-xs text-gray-500">Fill out form or call</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                    <div className="flex-1 h-px bg-gray-200"></div>
-                  </div>
-                  
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <div className="text-sm font-medium text-gray-900 mb-2">Requirements Form</div>
-                    <div className="space-y-1">
-                      <div className="text-xs text-gray-600">• Email automation</div>
-                      <div className="text-xs text-gray-600">• Scheduling system</div>
-                      <div className="text-xs text-gray-600">• Customer support</div>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <span>Discuss your business needs</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <span>Identify automation opportunities</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <span>Get custom solution proposal</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -387,7 +395,7 @@ export default function Page() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">We build it for you</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Our team creates your custom AI assistant with GPT prompt setup, thorough testing, and integration with your existing tools.
+                  Our team creates your custom AI assistant with GPT prompt setup, thorough testing, and integration with your existing tool and data.
                 </p>
                 
                 {/* Visual Elements */}
@@ -430,43 +438,45 @@ export default function Page() {
                 <div className="absolute -top-4 -right-4 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
                   3
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">You start using it</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Instruction & Get Started</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  We provide a complete setup guide and monthly support. Your AI assistant is ready to handle emails, scheduling, and customer inquiries.
+                  We provide a thorough training for you and your team to use the AI, and optional monthly support. After, you're AI will become a valuable tool for your business.
                 </p>
                 
                 {/* Visual Elements */}
                 <div className="space-y-4">
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
-                      <div className="text-sm font-medium text-gray-900">Your AI Assistant</div>
+                      <div>
+                        <div className="font-semibold text-gray-900">Training & Launch</div>
+                        <div className="text-sm text-gray-600">Get up and running fast</div>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <div className="text-xs text-gray-600">✓ Email automation</div>
-                      <div className="text-xs text-gray-600">✓ Appointment scheduling</div>
-                      <div className="text-xs text-gray-600">✓ Customer support</div>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 text-sm text-gray-700">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <span>Comprehensive team training</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-700">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <span>Live demo and walkthrough</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-700">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <span>Optional ongoing support</span>
+                      </div>
                     </div>
-                    <button className="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition">
-                      Start Using
-                    </button>
-                  </div>
-                  
-                  <div className="flex items-center gap-2 text-center">
-                    <div className="flex-1 h-px bg-gray-200"></div>
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                    <div className="flex-1 h-px bg-gray-200"></div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-sm font-medium text-gray-900">Your Business</div>
-                    <div className="text-xs text-gray-500">Automated & Efficient</div>
+                    <div className="mt-4 pt-4 border-t border-blue-200">
+                      <div className="text-center">
+                        <div className="text-sm font-medium text-gray-900">Ready to automate!</div>
+                        <div className="text-xs text-gray-500 mt-1">Your AI is live and working</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -661,7 +671,7 @@ export default function Page() {
                   <p className="text-sm text-gray-500 mb-1">co-founder</p>
                   <h3 className="text-2xl font-bold text-blue-600 mb-4">Nathan Padhy</h3>
                   <p className="text-gray-600 leading-relaxed mb-4">
-                    A dedicated Electrical Engineering studnet with a background in aiding small businesses, and a passion for AI. 
+                    Electrical Engineering student with involvement in multiple successful startups, using AI to stimulate growht and efficiency.
                   </p>
                   
                                       {/* Social Icons */}
@@ -698,7 +708,7 @@ export default function Page() {
                   <p className="text-sm text-gray-500 mb-1">co-founder</p>
                   <h3 className="text-2xl font-bold text-blue-600 mb-4">Arjun Verma</h3>
                   <p className="text-gray-600 leading-relaxed mb-4">
-                   A Computer Science student at UPenn with extensive experience with deep machine learning.
+                  UPenn Masters student in computer science with specialization in Machine learning & AI. Currently works as AI researcher at General Elecetric 
                   </p>
                   
                   {/* Social Icons */}
@@ -771,11 +781,52 @@ export default function Page() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-3">
-                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Services</a>
-                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Solutions</a>
-                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Pricing</a>
-                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Support</a>
-                <a href="#" className="block text-gray-300 hover:text-blue-400 transition">Book Consultation</a>
+                <a 
+                  href="#use-cases" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('use-cases')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="block text-gray-300 hover:text-blue-400 transition cursor-pointer"
+                >
+                  Use Cases
+                </a>
+                <a 
+                  href="#how-it-works" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="block text-gray-300 hover:text-blue-400 transition cursor-pointer"
+                >
+                  How It Works
+                </a>
+                <a 
+                  href="#pricing" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="block text-gray-300 hover:text-blue-400 transition cursor-pointer"
+                >
+                  Pricing
+                </a>
+                <a 
+                  href="#about" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="block text-gray-300 hover:text-blue-400 transition cursor-pointer"
+                >
+                  About
+                </a>
+                <button 
+                  onClick={() => setShowForm(true)}
+                  className="block text-gray-300 hover:text-blue-400 transition cursor-pointer text-left w-full"
+                >
+                  Book Consultation
+                </button>
               </div>
             </div>
           </div>

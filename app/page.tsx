@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Playfair_Display, Inter, Poppins, Montserrat } from 'next/font/google';
+import { supabase } from '../lib/supabaseClient';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -34,6 +35,10 @@ export default function Page() {
   const [currentSection, setCurrentSection] = useState('hero');
   const [isAtTop, setIsAtTop] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', phone_number: '', description: '' });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,6 +91,39 @@ export default function Page() {
       console.log('Element not found:', sectionId);
     }
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+
+    console.log('Submitting form data:', form);
+
+    // Insert into Supabase
+    const { error } = await supabase.from('contact_info').insert([form]);
+    setLoading(false);
+
+    if (error) {
+      console.error('Supabase error:', error);
+      setError('There was a problem submitting the form. Please try again.');
+    } else {
+      console.log('Form submitted successfully!');
+      setSuccess(true);
+      setForm({ name: '', email: '', phone_number: '', description: '' });
+    }
+  };
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => setShowForm(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   return (
     <div className={`flex flex-col min-h-screen ${montserrat.className}`} style={{ scrollBehavior: 'smooth' }}>
@@ -220,41 +258,60 @@ export default function Page() {
                   ✕
                 </button>
               </div>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
-                  <input 
-                    type="text" 
-                    placeholder="Your name" 
+                                      <input
+                      type="text"
+                      name="name"
+                      placeholder="Your name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                    />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
                     className="w-full px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <input 
-                    type="email" 
-                    placeholder="Email address" 
-                    className="w-full px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                  />
+                                      <input
+                      type="text"
+                      name="phone_number"
+                      placeholder="Phone number"
+                      value={form.phone_number}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                    />
                 </div>
                 <div>
-                  <input 
-                    type="text" 
-                    placeholder="Company (optional)" 
-                    className="w-full px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <textarea 
+                  <textarea
+                    name="description"
                     placeholder="Tell us about your potential use case or how you'd like to use AI in your business..."
                     rows={4}
+                    value={form.description}
+                    onChange={handleChange}
+                    required
                     className="w-full px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
                   />
                 </div>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition-colors duration-200"
+                  disabled={loading}
                 >
-                  Submit
+                  {loading ? 'Submitting...' : 'Submit'}
                 </button>
+                {success && <p className="text-green-700 text-center mt-2">Thank you! We’ll be in touch soon.</p>}
+                {error && <p className="text-red-700 text-center mt-2">{error}</p>}
               </form>
               <p className="text-gray-600 text-sm mt-4 text-center"></p>
             </div>

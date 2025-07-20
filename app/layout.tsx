@@ -15,33 +15,33 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "vibedev.ai",
-  description: "Experience the new way of coding with vibedev.ai. Transform your development workflow and vibe with your code like never before.",
+  title: "Aere.ai",
+  description: "",
   icons: {
     icon: [
       {
-        url: "/images/idevibelogo.png",
+        url: "/images/aere blue 2.jpg",
         type: "image/png",
         sizes: "32x32"
       },
       {
-        url: "/images/idevibelogo.png",
+        url: "/images/aere blue 2.jpg",
         type: "image/png",
         sizes: "16x16"
       }
     ],
     apple: [
       {
-        url: "/images/idevibelogo.png",
+        url: "/images/aere blue 2.jpg",
         type: "image/png",
         sizes: "180x180"
       }
     ],
-    shortcut: [{ url: "/images/idevibelogo.png" }],
+    shortcut: [{ url: "/images/aere blue 2.jpg" }],
     other: [
       {
         rel: "icon",
-        url: "/images/idevibelogo.png",
+        url: "/images/aere blue 2.jpg",
       },
     ],
   },

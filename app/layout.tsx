@@ -20,28 +20,28 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/images/aere blue 2.jpg",
+        url: "/images/logo-3.png",
         type: "image/png",
         sizes: "32x32"
       },
       {
-        url: "/images/aere blue 2.jpg",
+        url: "/images/logo-3.png",
         type: "image/png",
         sizes: "16x16"
       }
     ],
     apple: [
       {
-        url: "/images/aere blue 2.jpg",
+        url: "/images/logo-3.png",
         type: "image/png",
         sizes: "180x180"
       }
     ],
-    shortcut: [{ url: "/images/aere blue 2.jpg" }],
+    shortcut: [{ url: "/images/logo-3.png" }],
     other: [
       {
         rel: "icon",
-        url: "/images/aere blue 2.jpg",
+        url: "/images/logo-3.png",
       },
     ],
   },

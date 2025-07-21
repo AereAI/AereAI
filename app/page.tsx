@@ -569,8 +569,8 @@ export default function Page() {
                   Ideal for businesses that want ongoing AI support and maintenance with a lower upfront cost.
                 </p>
                 <div className="mb-6">
-                  <span className="text-3xl font-bold text-gray-900">$350</span>
-                  <span className="text-gray-600 ml-2">+ $30/month</span>
+                  <span className="text-3xl font-bold text-gray-900">$500</span>
+                  <span className="text-gray-600 ml-2">+ $40/month</span>
                 </div>
               </div>
 
@@ -635,7 +635,7 @@ export default function Page() {
                   Perfect for businesses that want a custom AI solution without ongoing commitments.
                 </p>
                 <div className="mb-6">
-                  <span className="text-3xl font-bold text-gray-900">$500</span>
+                  <span className="text-3xl font-bold text-gray-900">$1000</span>
                   <span className="text-gray-600 ml-2">one time</span>
                 </div>
               </div>

@@ -799,9 +799,12 @@ export default function Page() {
             {/* Logo and Slogan */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">A</span>
-                </div>
+                <img 
+                  src="/images/logo-5.png" 
+                  alt="Aere Logo" 
+                  className="w-10 h-10 rounded object-contain bg-transparent border-none" 
+                  style={{ background: 'none' }}
+                />
                 <span className="text-2xl font-bold">Aere</span>
               </div>
               <p className="text-gray-300 text-lg mb-6">

@@ -563,13 +563,14 @@ export default function Page() {
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Monthly Subscription Plan */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-blue-400 ring-2 ring-blue-200 relative">
+              <div className="absolute top-4 right-4 bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full shadow-sm">Best Value</div>
               <div className="mb-6">
                 <div className="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
-                  Monthly
+                  Subscription
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  Ideal for businesses that want ongoing AI support and maintenance with a lower upfront cost.
+                  Get ongoing access to your custom AI model, OpenAI (ChatGPT Plus) subscription included, training, and optional support. Model access is active only while subscribed.
                 </p>
                 <div className="mb-6">
                   <span className="text-3xl font-bold text-gray-900">$500</span>
@@ -584,7 +585,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Included OpenAI Subscription</span>
+                  <span className="text-gray-700">OpenAI (ChatGPT Plus) subscription included</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
@@ -592,7 +593,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Monthly consultation/maintenance</span>
+                  <span className="text-gray-700">Access to your custom AI model while subscribed</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
@@ -600,7 +601,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Standard model development</span>
+                  <span className="text-gray-700">Comprehensive training for your team</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
@@ -608,7 +609,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Ongoing support & updates</span>
+                  <span className="text-gray-700">Optional ongoing support & updates</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
@@ -616,7 +617,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Cancel Subscription Anytime</span>
+                  <span className="text-gray-700">Cancel subscription anytime</span>
                 </div>
               </div>
 
@@ -635,7 +636,7 @@ export default function Page() {
                   One Time
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  Perfect for businesses that want a custom AI solution without ongoing commitments.
+                  We build your custom AI model, train your team, and you own it—no ongoing fees, no OpenAI subscription included. You run it as long as you want, fully independent.
                 </p>
                 <div className="mb-6">
                   <span className="text-3xl font-bold text-gray-900">$1000</span>
@@ -650,7 +651,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Model development</span>
+                  <span className="text-gray-700">Custom model development</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
@@ -658,7 +659,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Consultant meetings</span>
+                  <span className="text-gray-700">Consultation & team training</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
@@ -666,7 +667,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Model delivered</span>
+                  <span className="text-gray-700">Model delivered & runs indefinitely</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
@@ -674,7 +675,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">No subscriptions required</span>
+                  <span className="text-gray-700">No OpenAI subscription included</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
@@ -682,7 +683,7 @@ export default function Page() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">Optional subscription available</span>
+                  <span className="text-gray-700">No ongoing support</span>
                 </div>
               </div>
 

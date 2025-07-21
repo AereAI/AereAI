@@ -129,9 +129,12 @@ export default function Page() {
     <div className={`flex flex-col min-h-screen ${montserrat.className}`} style={{ scrollBehavior: 'smooth' }}>
       {/* Header/Navigation Bar */}      <header className={`w-full flex items-center justify-between px-8 py-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'} ${isAtTop ? 'bg-transparent' : 'bg-white/60 backdrop-blur-sm shadow-sm'}`}>
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className={`w-8 h-8 rounded flex items-center justify-center ${isAtTop ? 'bg-white/20 backdrop-blur-sm border border-white/30' : 'bg-gray-900/20 backdrop-blur-sm border border-gray-900/30'}`}>
-            <span className={`font-bold text-lg ${isAtTop ? 'text-white' : 'text-gray-900'}`}>A</span>
-          </div>
+          <img 
+            src="/images/logo-5.png" 
+            alt="Aere Logo" 
+            className="w-8 h-8 rounded object-contain bg-transparent border-none" 
+            style={{ background: 'none' }}
+          />
           <span className={`text-xl font-bold tracking-tight ${isAtTop ? 'text-white' : 'text-gray-900'}`}>Aere</span>
         </div>
         

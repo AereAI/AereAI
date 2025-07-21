@@ -732,7 +732,7 @@ export default function Page() {
                   <p className="text-sm text-gray-500 mb-1">co-founder</p>
                   <h3 className="text-2xl font-bold text-blue-600 mb-4">Nathan Padhy</h3>
                   <p className="text-gray-600 leading-relaxed mb-4">
-                    Electrical Engineering student with involvement in multiple successful startups, using AI to stimulate growht and efficiency.
+                    Electrical Engineering student with involvement in multiple successful startups, using AI to stimulate growth and efficiency.
                   </p>
                   
                                       {/* Social Icons */}
